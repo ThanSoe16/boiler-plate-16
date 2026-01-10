@@ -1,8 +1,8 @@
 import { Manrope } from 'next/font/google';
-import { ThemeProvider } from '@/providers/theme-provider';
 import { baseMetadata } from '@/lib/metadata';
 import './globals.css';
 import '@radix-ui/themes/styles.css';
+import AppProviders from '@/providers/app-provider';
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -21,14 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${manrope.variable} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );
