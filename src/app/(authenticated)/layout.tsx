@@ -1,12 +1,8 @@
-import { getAuthContextData } from '@/features/base/hooks/get-auth-context';
-import { AuthenticatedProvider } from '@/providers/authenticated-provider';
-import { redirect } from 'next/navigation';
+'use client';
 
-export default async function ProtectedLayout({ children }: { children: React.ReactNode }) {
-  try {
-    const data = await getAuthContextData();
-    return <AuthenticatedProvider value={data}>{children}</AuthenticatedProvider>;
-  } catch (error) {
-    redirect('/login');
-  }
+import { ReactNode } from 'react';
+import { AuthenticatedProvider } from '@/providers/authenticated-provider';
+
+export default function ProtectedLayout({ children }: { children: ReactNode }) {
+  return <AuthenticatedProvider>{children}</AuthenticatedProvider>;
 }
