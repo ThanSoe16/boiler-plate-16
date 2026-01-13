@@ -66,7 +66,7 @@ const columns = [
 
 export function TableDemo() {
   return (
-    <div className="w-full">
+    <div className="w-full px-6">
       <DataTable columns={columns} data={invoices} />
     </div>
   );

@@ -63,7 +63,7 @@ export const invoiceColumns: ColumnDef<any>[] = [
 
 export function DraggableTableSimple() {
   return (
-    <div className="w-full">
+    <div className="w-full px-6">
       <DraggableTable
         columns={invoiceColumns}
         data={invoices}

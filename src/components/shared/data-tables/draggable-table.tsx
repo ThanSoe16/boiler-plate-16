@@ -131,7 +131,7 @@ export function DraggableTable<TData extends { id: string }, TValue>({
                 {table.getHeaderGroups().map((group) => (
                   <TableRow key={group.id}>
                     {group.headers.map((header) => (
-                      <TableHead key={header.id}>
+                      <TableHead key={header.id} className="bg-secondary">
                         {flexRender(header.column.columnDef.header, header.getContext())}
                       </TableHead>
                     ))}
@@ -153,7 +153,7 @@ export function DraggableTable<TData extends { id: string }, TValue>({
 
             <DragOverlay>
               {activeRow ? (
-                <div className="bg-white shadow-lg rounded px-4 py-2">
+                <div className="rounded px-4 py-2">
                   <Menu />
                 </div>
               ) : null}
@@ -183,7 +183,7 @@ const SortableRow = ({ row, index }: { row: Row<any>; index: number }) => {
     <TableRow
       ref={setNodeRef}
       style={style}
-      className={cn('border bg-white', isDragging && 'opacity-60 shadow-lg')}
+      className={cn(' ', isDragging && 'shadow-lg text-primary')}
     >
       {row.getVisibleCells().map((cell) => (
         <TableCell key={cell.id}>
@@ -194,7 +194,7 @@ const SortableRow = ({ row, index }: { row: Row<any>; index: number }) => {
               className="cursor-grab active:cursor-grabbing flex items-center gap-2"
             >
               <Menu />
-              <span className="text-xs text-gray-500">{index}</span>
+              <span className="text-xs">{index}</span>
             </button>
           ) : (
             flexRender(cell.column.columnDef.cell, cell.getContext())
